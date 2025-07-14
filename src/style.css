@@ -8,6 +8,35 @@ body {
   border-radius: 10px;
   box-shadow: 5px 5px 10px rgba(151, 151, 151, 0.1);
   margin: 60px auto;
-  max-width: 500px;
+  max-width: 550px;
   padding: 30px;
+}
+
+header {
+  border-bottom: 1px solid #fff5f0;
+  padding-bottom: 30px;
+}
+.city-search-input,
+.city-search-button {
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 15px;
+}
+
+.city-search-input {
+  background: rgb(255, 246, 240);
+  margin-right: 5px;
+  width: 78%;
+}
+
+.city-search-button {
+  background: rgb(255, 163, 102);
+  color: #ffffff;
+  width: 20%;
+}
+
+footer {
+  border-top: 1px solid #fff5f0;
+  padding-top: 25px;
 }
