@@ -18,9 +18,10 @@
   <body>
     <div class="weather-app">
       <header>
-        <form class="city-search-form">
+        <form class="city-search-form" id="city-search-form">
           <input
             class="city-search-input"
+            id="city-text-input"
             type="search"
             placeholder="Enter a city.."
             required
@@ -43,7 +44,7 @@
             </div>
           </div>
           <div class="current-city-overview">
-            <h1 class="current-city-data">Halifax</h1>
+            <h1 class="current-city-data" id="current-city">Halifax</h1>
             <p class="current-time-data">
               Sunday 14:25
               <br />
