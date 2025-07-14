@@ -1,5 +1,5 @@
 body {
-  background: rgb(255, 246, 240);
+  background: #fff6f0;
   font-family: "Inter", sans-serif;
 }
 
@@ -16,6 +16,7 @@ header {
   border-bottom: 1px solid #fff5f0;
   padding-bottom: 30px;
 }
+
 .city-search-input,
 .city-search-button {
   border: none;
@@ -25,18 +26,25 @@ header {
 }
 
 .city-search-input {
-  background: rgb(255, 246, 240);
+  background: #fff6f0;
   margin-right: 5px;
   width: 78%;
 }
 
 .city-search-button {
-  background: rgb(255, 163, 102);
+  background: #ffa366;
   color: #ffffff;
   width: 20%;
 }
 
 footer {
   border-top: 1px solid #fff5f0;
+  color: #a9a8b5;
+  font-size: 13px;
   padding-top: 25px;
+  text-align: center;
+}
+
+a {
+  color: #ffa366;
 }
