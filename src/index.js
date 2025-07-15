@@ -12,6 +12,7 @@ function showCurrentWeather(response) {
   let windSpeed = Math.round(response.data.wind.speed);
   let timeElement = document.querySelector("#current-time");
   let date = new Date(response.data.time * 1000);
+  let iconElement = document.querySelector("#current-temperature-icon");
 
   console.log(response.data);
 
@@ -21,6 +22,11 @@ function showCurrentWeather(response) {
   humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
   windSpeedElement.innerHTML = `${windSpeed}km/h`;
   timeElement.innerHTML = formatDate(date);
+  iconElement.innerHTML = `<img
+      src="${response.data.condition.icon_url}"
+      alt="weather description icon"
+      class="current-temperature-icon"
+    />`;
 }
 
 function formatDate(date) {
