@@ -1,9 +1,27 @@
 function showCurrentWeather(response) {
+  function showCelsiusTemperature() {
+    currentTemperatureElement.innerHTML = temperature;
+    celsius.style.color = "#000000";
+    fahrenheit.style.color = "#a9a8b5";
+  }
+
+  function showFahrenheitTemperature() {
+    currentTemperatureElement.innerHTML = Math.round(
+      (temperature * 9) / 5 + 32
+    );
+    celsius.style.color = "#a9a8b5";
+    fahrenheit.style.color = "#000000";
+  }
+
   let cityElement = document.querySelector("#current-city");
   let currentTemperatureElement = document.querySelector(
     "#current-temperature"
   );
   let temperature = Math.round(response.data.temperature.current);
+  let celsius = document.querySelector("#current-temperature-celsius");
+  celsius.addEventListener("click", showCelsiusTemperature);
+  let fahrenheit = document.querySelector("#current-temperature-fahrenheit");
+  fahrenheit.addEventListener("click", showFahrenheitTemperature);
   let descriptionElement = document.querySelector(
     "#current-weather-description"
   );
@@ -14,19 +32,18 @@ function showCurrentWeather(response) {
   let date = new Date(response.data.time * 1000);
   let iconElement = document.querySelector("#current-temperature-icon");
 
-  console.log(response.data);
-
   cityElement.innerHTML = response.data.city;
   currentTemperatureElement.innerHTML = temperature;
+  celsius.style.color = "#000000";
   descriptionElement.innerHTML = response.data.condition.description;
   humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
   windSpeedElement.innerHTML = `${windSpeed}km/h`;
   timeElement.innerHTML = formatDate(date);
   iconElement.innerHTML = `<img
-      src="${response.data.condition.icon_url}"
-      alt="weather description icon"
-      class="current-temperature-icon"
-    />`;
+        src="${response.data.condition.icon_url}"
+        alt="weather description icon"
+        class="current-temperature-icon"
+      />`;
 }
 
 function formatDate(date) {
