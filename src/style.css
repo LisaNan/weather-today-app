@@ -1,5 +1,5 @@
 body {
-  background: #fff6f0;
+  background: #fff9f5;
   font-family: "Inter", sans-serif;
 }
 
@@ -107,6 +107,36 @@ main {
 .current-time-data {
   color: #a9a8b5;
   margin: 0 auto;
+}
+
+.weather-forecast-data {
+  color: #a9a8b5;
+  display: flex;
+  font-size: 16px;
+  justify-content: space-between;
+  line-height: 20px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.weather-forecast-day {
+  margin-bottom: 10px;
+}
+
+.weather-forecast-icon {
+  font-size: 30px;
+}
+
+.weather-forecast-temperature {
+  color: #ff5773;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.weather-forecast-max-temperature,
+.weather-forecast-min-temperature {
+  padding: 0 5px;
 }
 
 footer {
