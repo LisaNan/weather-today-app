@@ -44,6 +44,8 @@ function showCurrentWeather(response) {
         alt="weather description icon"
         class="current-temperature-icon"
       />`;
+
+  getWeatherForecast(response.data.city);
 }
 
 function formatDate(date) {
@@ -78,7 +80,15 @@ function runCitySearchSubmit(event) {
   searchCity(searchInput.value);
 }
 
-function displayWeatherForecast() {
+function getWeatherForecast(city) {
+  let apiKey = "beac6ctb368bo560b6dfbc1164f16438";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showWeatherForecast);
+}
+
+function showWeatherForecast(response) {
+  console.log(response.data);
+
   let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
   let weatherForecastHtml = "";
 
@@ -107,4 +117,3 @@ let citySearchFormElement = document.querySelector("#city-search-form");
 citySearchFormElement.addEventListener("submit", runCitySearchSubmit);
 
 searchCity("Halifax");
-displayWeatherForecast();
