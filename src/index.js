@@ -93,8 +93,6 @@ function getWeatherForecast(city) {
 }
 
 function showWeatherForecast(response) {
-  console.log(response.data);
-
   let weatherForecastHtml = "";
 
   response.data.daily.forEach(function (day, index) {
@@ -102,26 +100,85 @@ function showWeatherForecast(response) {
       weatherForecastHtml =
         weatherForecastHtml +
         `
-    <div class="weather-forecast-data">
-            <div class="weather-forecast-day">${formatDay(day.time)}</div>
-            <img src="${
-              day.condition.icon_url
-            }" class="weather-forecast-icon" />
-            <div class="weather-forecast-temperature">
-              <div class="weather-forecast-max-temperature">
-                <strong>${Math.round(day.temperature.maximum)}°</strong>
-              </div>
-              <div class="weather-forecast-min-temperature">${Math.round(
-                day.temperature.minimum
-              )}°</div>
-            </div>
-          </div>
-    `;
+        <div class="weather-forecast-data">
+        <div class="weather-forecast-day">${formatDay(day.time)}</div>
+        <img src="${day.condition.icon_url}" class="weather-forecast-icon" />
+        <div class="weather-forecast-temperature">
+        <div class="weather-forecast-max-temperature">
+        <strong>${Math.round(day.temperature.maximum)}°</strong>
+        </div>
+        <div class="weather-forecast-min-temperature">${Math.round(
+          day.temperature.minimum
+        )}°</div>
+        </div>
+        </div>
+        `;
     }
   });
 
   let weatherForecastElement = document.querySelector("#weather-forecast");
   weatherForecastElement.innerHTML = weatherForecastHtml;
+
+  function showCelsiusTemperature() {
+    let weatherForecastHtml = "";
+
+    response.data.daily.forEach(function (day, index) {
+      if (index > 0 && index < 6) {
+        weatherForecastHtml =
+          weatherForecastHtml +
+          `
+        <div class="weather-forecast-data">
+        <div class="weather-forecast-day">${formatDay(day.time)}</div>
+        <img src="${day.condition.icon_url}" class="weather-forecast-icon" />
+        <div class="weather-forecast-temperature">
+        <div class="weather-forecast-max-temperature" id="forecast-max-temperature">
+        <strong>${Math.round(day.temperature.maximum)}°</strong>
+        </div>
+        <div class="weather-forecast-min-temperature" id="forecast-min-temperature">
+        ${Math.round(day.temperature.minimum)}
+        </div>
+        </div>
+        </div>
+        `;
+      }
+    });
+
+    let weatherForecastElement = document.querySelector("#weather-forecast");
+    weatherForecastElement.innerHTML = weatherForecastHtml;
+  }
+
+  function showFahrenheitTemperature() {
+    let weatherForecastHtml = "";
+
+    response.data.daily.forEach(function (day, index) {
+      if (index > 0 && index < 6) {
+        weatherForecastHtml =
+          weatherForecastHtml +
+          `
+        <div class="weather-forecast-data">
+        <div class="weather-forecast-day">${formatDay(day.time)}</div>
+        <img src="${day.condition.icon_url}" class="weather-forecast-icon" />
+        <div class="weather-forecast-temperature">
+        <div class="weather-forecast-max-temperature" id="forecast-max-temperature">
+        <strong>${Math.round((day.temperature.maximum * 9) / 5 + 32)}°</strong>
+        </div>
+        <div class="weather-forecast-min-temperature" id="forecast-min-temperature">
+        ${Math.round((day.temperature.minimum * 9) / 5 + 32)}
+        </div>
+        </div>
+        </div>
+        `;
+      }
+    });
+
+    let weatherForecastElement = document.querySelector("#weather-forecast");
+    weatherForecastElement.innerHTML = weatherForecastHtml;
+  }
+
+  let celsius = document.querySelector("#current-temperature-celsius");
+  let fahrenheit = document.querySelector("#current-temperature-fahrenheit");
+  celsius.addEventListener("click", showCelsiusTemperature);
+  fahrenheit.addEventListener("click", showFahrenheitTemperature);
 }
 
 let citySearchFormElement = document.querySelector("#city-search-form");
