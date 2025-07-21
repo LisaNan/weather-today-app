@@ -135,7 +135,7 @@ function showWeatherForecast(response) {
         <strong>${Math.round(day.temperature.maximum)}°</strong>
         </div>
         <div class="weather-forecast-min-temperature" id="forecast-min-temperature">
-        ${Math.round(day.temperature.minimum)}
+        ${Math.round(day.temperature.minimum)}°
         </div>
         </div>
         </div>
@@ -163,7 +163,7 @@ function showWeatherForecast(response) {
         <strong>${Math.round((day.temperature.maximum * 9) / 5 + 32)}°</strong>
         </div>
         <div class="weather-forecast-min-temperature" id="forecast-min-temperature">
-        ${Math.round((day.temperature.minimum * 9) / 5 + 32)}
+        ${Math.round((day.temperature.minimum * 9) / 5 + 32)}°
         </div>
         </div>
         </div>
